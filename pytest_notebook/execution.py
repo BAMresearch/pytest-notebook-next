@@ -6,7 +6,6 @@ import logging
 from pathlib import Path
 import tempfile
 from textwrap import dedent
-from typing import List, Optional, Union
 
 import attr
 from attr.validators import instance_of
@@ -29,7 +28,8 @@ COVERAGE_KEY = "coverage_data"
 
 
 def coverage_code_setup(
-    source: Optional[str], config_file: Union[None, str, Path]
+    source: str | None,
+    config_file: str | Path | None,
 ) -> str:
     source = f"{source!r}" if source else "None"
     config_file = f"{config_file!r}" if config_file else "False"
@@ -197,7 +197,7 @@ class CoverageError(Exception):
 class ExecuteResult:
     """Result of notebook execution."""
 
-    exec_error: Union[None, Exception] = attr.ib(
+    exec_error: None | Exception = attr.ib(
         validator=instance_of((type(None), Exception)),
         metadata={"help": "Execution exception."},
     )
@@ -236,13 +236,13 @@ class ExecuteResult:
 def execute_notebook(
     notebook: NotebookNode,
     *,
-    resources: Union[dict, None] = None,
-    cwd: Union[str, None] = None,
+    resources: dict | None = None,
+    cwd: str | None = None,
     timeout: int = 120,
     allow_errors: bool = False,
     with_coverage: bool = False,
-    cov_config_file: Union[str, None] = None,
-    cov_source: Union[List[str], None] = None,
+    cov_config_file: str | None = None,
+    cov_source: list[str] | None = None,
 ) -> ExecuteResult:
     """Execute a notebook.
 
