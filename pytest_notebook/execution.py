@@ -94,7 +94,7 @@ class CoverageNotebookClient(NotebookClient):
 
         async with self.async_setup_kernel(**kwargs):
             assert self.kc is not None
-            self.log.info("Executing notebook with kernel: %s" % self.kernel_name)
+            self.log.info("Executing notebook with kernel:", self.kernel_name)
             msg_id = await ensure_async(self.kc.kernel_info())
             info_msg = await self.async_wait_for_reply(msg_id)
             if info_msg is not None:

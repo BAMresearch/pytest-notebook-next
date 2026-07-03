@@ -246,7 +246,7 @@ def gather_config_options(pytestconfig):
 def pytest_report_header(config):
     """Add header information for pytest execution."""
 
-    kwargs, other_args = gather_config_options(config)
+    kwargs, _ = gather_config_options(config)
     header = []
     if kwargs.get("exec_notebook", True) and kwargs.get("exec_cwd", None):
         header.append(f"NB exec dir: {kwargs['exec_cwd']}")
@@ -261,13 +261,13 @@ def pytest_report_header(config):
 def nb_regression(pytestconfig):
     """Fixture to execute a Jupyter Notebook, and test its output is as expected."""
 
-    kwargs, other_args = gather_config_options(pytestconfig)
+    kwargs, _ = gather_config_options(pytestconfig)
     return NBRegressionFixture(**kwargs)
 
 
 def pytest_collect_file(file_path: Path, parent):
     """Compatible with both old and new pytest versions."""
-    kwargs, other_args = gather_config_options(parent.config)
+    _, other_args = gather_config_options(parent.config)
 
     p = file_path  # if file_path is not None else Path(path)
 
@@ -305,13 +305,13 @@ class JupyterNbTest(pytest.Item):
         self._fixtureinfo = self.session._fixturemanager.getfixtureinfo(
             self.parent, NBRegressionFixture.check, NBRegressionFixture
         )  # this is required for --setup-plan
-        notebook, nb_config = load_notebook_with_config(self.fspath)
+        _, nb_config = load_notebook_with_config(self.fspath)
         if nb_config.skip:
             self.add_marker(pytest.mark.skip(reason=nb_config.skip_reason))
 
     def runtest(self):
         """Run the test."""
-        kwargs, other_args = gather_config_options(self.config)
+        kwargs, _ = gather_config_options(self.config)
         fixture = NBRegressionFixture(**kwargs)
         fixture.check(self.fspath)
 
