@@ -64,7 +64,9 @@ def parse_cell_content(cell: Optional[str]) -> tuple[list[str], list[str], list[
     return test_content, config_content, literals_content
 
 
-def eval_literals(literals: list[str], local_ns: Optional[dict]) -> list[tuple[str, str]]:
+def eval_literals(
+    literals: list[str], local_ns: Optional[dict]
+) -> list[tuple[str, str]]:
     """Evaluate and yield literal items."""
     for literal in literals:
         literal = literal.strip()

@@ -260,7 +260,9 @@ def config_from_metadata(nb: NotebookNode) -> dict:
     )
 
 
-def load_notebook(path: Union[TextIO, str], as_version=DEFAULT_NB_VERSION) -> NotebookNode:
+def load_notebook(
+    path: Union[TextIO, str], as_version=DEFAULT_NB_VERSION
+) -> NotebookNode:
     """Load the notebook from file."""
     return nbformat.read(path, as_version=as_version)
 
