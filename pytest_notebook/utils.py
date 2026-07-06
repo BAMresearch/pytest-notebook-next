@@ -1,8 +1,9 @@
 """Utility functions."""
 from __future__ import annotations
+
 import os
 import textwrap
-from typing import Any, get_args, get_origin, Union, get_type_hints
+from typing import get_type_hints
 import warnings
 
 import attr

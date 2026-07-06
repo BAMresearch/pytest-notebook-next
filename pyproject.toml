@@ -71,12 +71,21 @@ coalesce_streams = "pytest_notebook.post_processors:coalesce_streams"
 blacken_code = "pytest_notebook.post_processors:blacken_code"
 beautifulsoup = "pytest_notebook.post_processors:beautifulsoup"
 
+[tool.ruff]
+target-version = "py38"
+exclude = [
+    "tests/raw_files/poorly_formatted_code.ipynb"
+]
+
 [tool.ruff.lint]
 extend-select = ["B0", "C4", "I", "ICN", "ISC", "N", "RUF", "SIM", "UP"]
 extend-ignore = ["ISC001"]
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
 
 [tool.doc8]
 max-line-length = 100

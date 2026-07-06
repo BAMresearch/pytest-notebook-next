@@ -1,5 +1,6 @@
 """Diffing of notebooks."""
 from __future__ import annotations
+
 from collections.abc import Sequence
 import copy
 import operator

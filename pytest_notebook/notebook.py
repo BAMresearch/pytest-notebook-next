@@ -1,5 +1,6 @@
 """Module for working with notebook."""
 from __future__ import annotations
+
 import copy
 from functools import lru_cache
 
@@ -12,7 +13,7 @@ except ImportError:
 from collections.abc import Callable, Mapping
 import json
 import re
-from typing import Any, TextIO, Optional, Union
+from typing import Any, Optional, TextIO, Union
 
 import attr
 from attr.validators import instance_of

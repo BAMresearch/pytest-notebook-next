@@ -6,7 +6,7 @@ import logging
 from pathlib import Path
 import tempfile
 from textwrap import dedent
-from typing import Optional, Union, List
+from typing import List, Optional, Union
 
 import attr
 from attr.validators import instance_of

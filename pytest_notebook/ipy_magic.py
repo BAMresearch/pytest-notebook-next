@@ -7,6 +7,7 @@ then ``%pytest`` and ``%%pytest`` can be accessed.
 # TODO post solution to stackoverflow:
 # https://stackoverflow.com/questions/41304311/running-pytest-test-functions-inside-a-jupyter-notebook
 from __future__ import annotations
+
 import os
 from pathlib import Path
 import shlex

@@ -1,10 +1,11 @@
 """Jupyter Notebook Regression Test Class."""
 from __future__ import annotations
+
 import copy
 import logging
 import os
 import sys
-from typing import Any, List, TextIO, Optional, Tuple, Union
+from typing import Any, List, Optional, TextIO, Tuple, Union
 
 import attr
 from attr.validators import instance_of

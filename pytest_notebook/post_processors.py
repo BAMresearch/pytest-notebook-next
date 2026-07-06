@@ -4,6 +4,7 @@ All functions should take (notebook, resources) as input,
 and output a (new notebook, resources).
 """
 from __future__ import annotations
+
 import copy
 import functools
 import inspect
