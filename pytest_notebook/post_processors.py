@@ -45,7 +45,7 @@ def document_processors():
     """Create formatted string of all preprocessor docstrings."""
     return "\n\n".join(
         [
-            f"{n}:\n{textwrap.indent(inspect.cleandoc(load_processor(n).__doc__ or ""), "  ").rstrip()}"
+            f"{n}:\n{textwrap.indent(inspect.cleandoc(load_processor(n).__doc__ or ''), '  ').rstrip()}"
             for n in sorted(list_processor_names())
         ]
     )
