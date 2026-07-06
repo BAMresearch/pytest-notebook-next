@@ -5,6 +5,7 @@ and output a (new notebook, resources).
 """
 import copy
 import functools
+import inspect
 import logging
 import re
 import textwrap
@@ -44,7 +45,7 @@ def document_processors():
     """Create formatted string of all preprocessor docstrings."""
     return "\n\n".join(
         [
-            f"{n}:\n{textwrap.indent(load_processor(n).__doc__, '  ').rstrip()}"
+            f"{n}:\n{textwrap.indent(inspect.cleandoc(load_processor(n).__doc__ or ""), "  ").rstrip()}"
             for n in sorted(list_processor_names())
         ]
     )
@@ -83,7 +84,7 @@ def coalesce_streams(
 ) -> tuple[NotebookNode, dict]:
     """Merge all stream outputs with shared names into single streams.
 
-    This ensure deterministic outputs.
+    This ensures deterministic outputs.
 
     Adapted from:
     https://github.com/computationalmodelling/nbval/blob/master/nbval/plugin.py.
