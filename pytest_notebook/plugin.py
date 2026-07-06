@@ -180,7 +180,7 @@ def validate_diff_replace(pytestconfig):
     if isinstance(nb_diff_replace, NotSet):
         return None
 
-    if not isinstance(nb_diff_replace, list | tuple):
+    if not isinstance(nb_diff_replace, (list, tuple)):
         raise ValueError("nb_diff_replace option should be a list or tuple")
     output = []
     for i, line in enumerate(nb_diff_replace):

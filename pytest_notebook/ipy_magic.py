@@ -6,19 +6,21 @@ then ``%pytest`` and ``%%pytest`` can be accessed.
 """
 # TODO post solution to stackoverflow:
 # https://stackoverflow.com/questions/41304311/running-pytest-test-functions-inside-a-jupyter-notebook
+from __future__ import annotations
 import os
 from pathlib import Path
 import shlex
 import subprocess
 import sys
 import tempfile
+from typing import Optional, Union
 
 EXEC_NAME = "pytest"
 CONFIG_FILE_NAME = "pytest.ini"
 MAIN_FILE_NAME = "test_ipycell.py"
 
 
-def parse_cell_content(cell: str | None) -> tuple[list[str], list[str], list[str]]:
+def parse_cell_content(cell: Optional[str]) -> tuple[list[str], list[str], list[str]]:
     """Parse the cell contents.
 
     :returns: (test_content, config_content, literals_content)
@@ -61,7 +63,7 @@ def parse_cell_content(cell: str | None) -> tuple[list[str], list[str], list[str
     return test_content, config_content, literals_content
 
 
-def eval_literals(literals: list[str], local_ns: dict | None) -> list[tuple[str, str]]:
+def eval_literals(literals: list[str], local_ns: Optional[dict]) -> list[tuple[str, str]]:
     """Evaluate and yield literal items."""
     for literal in literals:
         literal = literal.strip()
@@ -95,7 +97,7 @@ def eval_literals(literals: list[str], local_ns: dict | None) -> list[tuple[str,
         yield evaluated
 
 
-def write_file(content: list[str], file_name: str, temp_dir: str | Path):
+def write_file(content: list[str], file_name: str, temp_dir: Union[str, Path]):
     """Write file to the ``temp_dir``."""
     if content:
         if isinstance(temp_dir, str):
@@ -105,7 +107,7 @@ def write_file(content: list[str], file_name: str, temp_dir: str | Path):
         temp_dir.joinpath(file_name).write_text("\n".join(content))
 
 
-def run_pytest(args: list[str], cwd: str | Path | None = None):
+def run_pytest(args: list[str], cwd: Optional[Union[str, Path]] = None):
     """Run pytest, with live output.
 
     Adapted from https://stackoverflow.com/a/18422264/5033292
@@ -126,7 +128,7 @@ def run_pytest(args: list[str], cwd: str | Path | None = None):
         sys.stdout.write(c.decode(sys.stdout.encoding or "utf8", "ignore"))
 
 
-def pytest(line: str = "", cell: str | None = None, local_ns: dict | None = None):
+def pytest(line: str = "", cell: Optional[str] = None, local_ns: Optional[dict] = None):
     """Run pytest.
 
     ``%pytest arg1 arg2 ...`` will run pytest in a temporary directory.

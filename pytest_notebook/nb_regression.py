@@ -1,9 +1,10 @@
 """Jupyter Notebook Regression Test Class."""
+from __future__ import annotations
 import copy
 import logging
 import os
 import sys
-from typing import Any, TextIO
+from typing import Any, List, TextIO, Optional, Tuple, Union
 
 import attr
 from attr.validators import instance_of
@@ -87,10 +88,10 @@ class NBRegressionResult:
         metadata={"help": "Notebook after execution and post-processing."},
     )
 
-    diff_full: list[DiffEntry] = attr.ib(
+    diff_full: List[DiffEntry] = attr.ib(
         metadata={"help": "Full diff of initial/final notebooks."}
     )
-    diff_filtered: list[DiffEntry] = attr.ib(
+    diff_filtered: List[DiffEntry] = attr.ib(
         metadata={
             "help": (
                 "Diff of initial/final notebooks, "
@@ -125,7 +126,7 @@ class NBRegressionFixture:
     exec_notebook: bool = attr.ib(
         True, instance_of(bool), metadata={"help": HELP_EXEC_NOTEBOOK}
     )
-    exec_cwd: str | None = attr.ib(
+    exec_cwd: Optional[str] = attr.ib(
         None, instance_of((type(None), str)), metadata={"help": HELP_EXEC_CWD}
     )
 
@@ -164,14 +165,14 @@ class NBRegressionFixture:
             except ImportError:
                 raise ImportError("The 'coverage' package must be installed.")
 
-    cov_config: str | None = attr.ib(
+    cov_config: Optional[str] = attr.ib(
         None, instance_of((type(None), str)), metadata={"help": HELP_COVERAGE_CONFIG}
     )
-    cov_source: str | tuple[str] = attr.ib(
+    cov_source: Union[str, Tuple[str]] = attr.ib(
         None, instance_of((type(None), tuple)), metadata={"help": HELP_COVERAGE_SOURCE}
     )
 
-    cov_merge: CoverageType | None = attr.ib(
+    cov_merge: Optional[CoverageType] = attr.ib(
         None, metadata={"help": HELP_COVERAGE_MERGE}, hash=True
     )
 
@@ -251,7 +252,7 @@ class NBRegressionFixture:
         super().__setattr__(key, value)
 
     def check(
-        self, path: TextIO | str, raise_errors: bool = True
+        self, path: Union[TextIO, str], raise_errors: bool = True
     ) -> NBRegressionResult:
         """Execute the Notebook and compare its initial vs. final contents.
 

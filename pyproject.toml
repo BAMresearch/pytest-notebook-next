@@ -15,6 +15,9 @@ classifiers = [
   "Topic :: Software Development :: Testing",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
@@ -23,7 +26,7 @@ classifiers = [
   "Operating System :: OS Independent",
   "License :: OSI Approved :: BSD License",
 ]
-requires-python = ">3.10"
+requires-python = ">=3.8"
 dependencies = [
   "pytest",
   "attrs",

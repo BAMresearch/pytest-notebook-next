@@ -1,4 +1,5 @@
 """Module for working with notebook."""
+from __future__ import annotations
 import copy
 from functools import lru_cache
 
@@ -11,7 +12,7 @@ except ImportError:
 from collections.abc import Callable, Mapping
 import json
 import re
-from typing import Any, TextIO
+from typing import Any, TextIO, Optional, Union
 
 import attr
 from attr.validators import instance_of
@@ -29,7 +30,7 @@ META_KEY = "nbreg"
 
 
 def mapping_to_dict(
-    obj: Any, strip_keys: list = (), leaf_func: Callable | None = None
+    obj: Any, strip_keys: list = (), leaf_func: Optional[Callable] = None
 ) -> dict:
     """Recursively convert mappable objects to dicts, including in lists and tuples.
 
@@ -44,7 +45,7 @@ def mapping_to_dict(
             for k in sorted(obj.keys())
             if k not in strip_keys
         }
-    elif isinstance(obj, list | tuple):
+    elif isinstance(obj, (list, tuple)):
         return [mapping_to_dict(i, strip_keys, leaf_func) for i in obj]
     elif leaf_func is not None:
         return leaf_func(obj)
@@ -53,7 +54,7 @@ def mapping_to_dict(
 
 
 def gather_json_paths(
-    obj: Any, paths: list, types: tuple | None = None, curr_path: tuple = ()
+    obj: Any, paths: list, types: Optional[tuple] = None, curr_path: tuple = ()
 ) -> Any:
     """Recursively gather paths to non dict/list elements of a json-like object.
 
@@ -258,13 +259,13 @@ def config_from_metadata(nb: NotebookNode) -> dict:
     )
 
 
-def load_notebook(path: TextIO | str, as_version=DEFAULT_NB_VERSION) -> NotebookNode:
+def load_notebook(path: Union[TextIO, str], as_version=DEFAULT_NB_VERSION) -> NotebookNode:
     """Load the notebook from file."""
     return nbformat.read(path, as_version=as_version)
 
 
 def load_notebook_with_config(
-    path: TextIO | str, as_version=DEFAULT_NB_VERSION
+    path: Union[TextIO, str], as_version=DEFAULT_NB_VERSION
 ) -> tuple[NotebookNode, MetadataConfig]:
     """Load the notebook from file, and scan its metadata for config data."""
     notebook = nbformat.read(path, as_version=as_version)

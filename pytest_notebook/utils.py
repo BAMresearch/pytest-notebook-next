@@ -1,6 +1,8 @@
 """Utility functions."""
+from __future__ import annotations
 import os
 import textwrap
+from typing import Any, get_args, get_origin, Union, get_type_hints
 import warnings
 
 import attr
@@ -98,7 +100,7 @@ def autodoc(attrs_class):
         else:
             return lines[0]
 
-    def param_doc(field):
+    def param_doc(field, type_hints):
         field_fn = f"{attrs_class.__module__}.{attrs_class.__name__}.{field.name}"
 
         if field.name[0] == "_":
@@ -111,7 +113,7 @@ def autodoc(attrs_class):
                 f"via the ``{field.name}`` attribute. "
             )
 
-        field_type = type_to_sphinx(field.type, field_fn)
+        field_type = type_to_sphinx(type_hints.get(field.name, field.type), field_fn)
 
         if field.default is not attr.NOTHING:
             optional = ""  # ", optional" this isn't accepted by sphinx
@@ -136,12 +138,13 @@ def autodoc(attrs_class):
         return title + "\n" + description
 
     if attr.fields(attrs_class):
+        hints = get_type_hints(attrs_class)
         params_section = textwrap.dedent(
             """\
             Parameters
             ----------
             """
-        ) + "\n\n".join(param_doc(field) for field in attr.fields(attrs_class))
+        ) + "\n\n".join(param_doc(field, hints) for field in attr.fields(attrs_class))
     else:
         params_section = ""
 
