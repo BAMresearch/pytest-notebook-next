@@ -1,5 +1,6 @@
 """Tests for ``NBRegressionFixture``."""
 import os
+import sys
 
 import pytest
 
@@ -46,7 +47,7 @@ def test_regression_regex_replace_pass():
         "/cells/12/outputs/0/data/text/latex",
         "/cells/9/outputs/0/metadata/application/json",
     )
-    fixture.diff_replace = (
+    patterns = [
         ("/cells/*/outputs/*/traceback", r"\<module\>.*\n", "<module>\n"),
         ("/cells/*/outputs/*/traceback", r"[\-]+", "-"),
         (
@@ -59,7 +60,21 @@ def test_regression_regex_replace_pass():
             r"\<ipython\-input\-[\-0-9a-zA-Z]*\>",
             "<ipython-input-XXX>",
         ),
-    )
+        (  # remove color escapes from traceback, they changed between Python versions
+            "/cells/*/outputs/*/traceback",
+            r"(?:\x1B[@-_][0-?]*[ -/]*[@-~])",
+            "",
+        ),
+    ]
+    if sys.version_info[1] < 11:
+        patterns.append(
+            (  # remove extra leading traceback context for older Python versions
+                "/cells/*/outputs/*/traceback",
+                r".*before exception[^\n]*\n?[^\n]*\n?",
+                "",
+            )
+        )
+    fixture.diff_replace = tuple(patterns)
     fixture.check(os.path.join(PATH, "raw_files", "different_outputs.ipynb"))
 
 
