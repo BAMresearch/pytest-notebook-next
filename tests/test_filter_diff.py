@@ -1,7 +1,7 @@
 import json
 import os
 
-from pytest_notebook.diffing import filter_diff
+from pytest_notebook_next.diffing import filter_diff
 
 PATH = os.path.dirname(os.path.realpath(__file__))
 

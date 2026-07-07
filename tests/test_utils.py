@@ -2,8 +2,8 @@ import sys
 
 import pytest
 
-from pytest_notebook.nb_regression import NBRegressionFixture
-from pytest_notebook.utils import autodoc
+from pytest_notebook_next.nb_regression import NBRegressionFixture
+from pytest_notebook_next.utils import autodoc
 
 
 @pytest.mark.skipif(

@@ -1,6 +1,6 @@
 """Module to provide an IPython magic for running pytest.
 
-Load via: ``%load_ext pytest_notebook.ipy_magic``,
+Load via: ``%load_ext pytest_notebook_next.ipy_magic``,
 then ``%pytest`` and ``%%pytest`` can be accessed.
 
 """

@@ -35,7 +35,7 @@ pytest-notebook-next
 
 A `pytest`_ plugin for regression testing and regenerating `Jupyter`_ Notebooks.
 
-.. image:: _static/pytest-notebook-screenshot.png
+.. image:: _static/pytest-notebook-next-screenshot.png
    :alt: Example Test
    :align: center
    :height: 400px
@@ -61,13 +61,13 @@ Features
 -  Integration with `coverage`_ and `pytest_cov`_ (see :ref:`tutorial_coverage`).
 
 -  A well defined API allows notebook regression tests to be run in multiple ways
-   (see :ref:`pytest_notebook_by_example`):
+   (see :ref:`pytest_notebook_next_by_example`):
 
    1. Using the pytest test collection architecture.
    2. As a pytest fixtures.
-   3. Using the ``pytest_notebook`` python package.
+   3. Using the ``pytest_notebook_next`` python package.
 
--  All stages are highly configurable (see :ref:`configuring_pytest_notebook`) *via*:
+-  All stages are highly configurable (see :ref:`configuring_pytest_notebook_next`) *via*:
 
    1. The pytest command-line interface.
    2. The pytest configuration file.

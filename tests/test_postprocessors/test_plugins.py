@@ -1,4 +1,4 @@
-from pytest_notebook.post_processors import document_processors
+from pytest_notebook_next.post_processors import document_processors
 
 
 def test_documentation(file_regression):

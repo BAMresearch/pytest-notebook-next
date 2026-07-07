@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "pytest_notebook"
+name = "pytest_notebook_next"
 dynamic = ["version", "description"]
 authors = [{name = "Chris Sewell", email = "chrisj_sewell@hotmail.com"}]
 readme = "README.md"
@@ -64,12 +64,12 @@ docs = [
 ]
 
 [project.entry-points."pytest11"]
-nb_regression = "pytest_notebook.plugin"
+nb_regression = "pytest_notebook_next.plugin"
 
 [project.entry-points."nbreg.post_proc"]
-coalesce_streams = "pytest_notebook.post_processors:coalesce_streams"
-blacken_code = "pytest_notebook.post_processors:blacken_code"
-beautifulsoup = "pytest_notebook.post_processors:beautifulsoup"
+coalesce_streams = "pytest_notebook_next.post_processors:coalesce_streams"
+blacken_code = "pytest_notebook_next.post_processors:blacken_code"
+beautifulsoup = "pytest_notebook_next.post_processors:beautifulsoup"
 
 [tool.ruff]
 target-version = "py38"

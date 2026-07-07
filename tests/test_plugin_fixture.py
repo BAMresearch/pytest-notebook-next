@@ -4,7 +4,7 @@ import os
 import attr
 import pytest
 
-from pytest_notebook.nb_regression import NBRegressionFixture
+from pytest_notebook_next.nb_regression import NBRegressionFixture
 
 PATH = os.path.dirname(os.path.realpath(__file__))
 

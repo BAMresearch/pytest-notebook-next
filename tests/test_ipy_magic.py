@@ -2,7 +2,7 @@ from textwrap import dedent
 
 import pytest
 
-from pytest_notebook import ipy_magic
+from pytest_notebook_next import ipy_magic
 
 
 def test_parse_cell_content():

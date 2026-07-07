@@ -16,5 +16,5 @@ For example:
       }
    }
 
-.. literalinclude:: ../../../pytest_notebook/resources/nb_metadata.schema.json
+.. literalinclude:: ../../../pytest_notebook_next/resources/nb_metadata.schema.json
   :language: JSON

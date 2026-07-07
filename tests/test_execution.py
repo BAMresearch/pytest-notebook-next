@@ -4,8 +4,8 @@ from textwrap import dedent
 from coverage import CoverageData
 import nbformat
 
-from pytest_notebook.execution import execute_notebook
-from pytest_notebook.notebook import create_cell, create_notebook
+from pytest_notebook_next.execution import execute_notebook
+from pytest_notebook_next.notebook import create_cell, create_notebook
 
 PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -43,7 +43,7 @@ def test_execute_notebook_with_coverage():
             create_cell(
                 dedent(
                     """\
-            from pytest_notebook.notebook import create_notebook
+            from pytest_notebook_next.notebook import create_notebook
             create_notebook()
             import nbformat
             """

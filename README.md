@@ -9,7 +9,7 @@
 
 A [pytest](https://github.com/pytest-dev/pytest) plugin for regression testing and regenerating [Jupyter Notebooks](https://jupyter.org/). It is largely based on (the unmaintained) [pytest-notebook](https://github.com/chrisjsewell/pytest-notebook) by Chris Sewell under the same [BSD-3](http://opensource.org/licenses/BSD-3-Clause) license.
 
-![Example Test](pytest-notebook-screenshot.png)
+![Example Test](pytest-notebook-next-screenshot.png)
 
 ------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ regenerate the notebooks, saving the new outputs.
 
     1. Using the pytest test collection architecture.
     2. As a pytest fixtures (`nb_regression.check(filename)`).
-    3. Using the `pytest_notebook` python package.
+    3. Using the `pytest_notebook_next` python package.
 
 - All stages are highly configurable *via*:
 

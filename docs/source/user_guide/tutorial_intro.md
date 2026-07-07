@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-(pytest_notebook_by_example)=
+(pytest_notebook_next_by_example)=
 
 # pytest-notebook-next by example
 
@@ -24,7 +24,7 @@ This notebook was rendered with [myst-nb](https://myst-nb.readthedocs.io): {nb-d
 ## Python API
 
 The principal component of `pytest-notebook-next` is the
-{py:class}`~pytest_notebook.nb_regression.NBRegressionFixture` class,
+{py:class}`~pytest_notebook_next.nb_regression.NBRegressionFixture` class,
 which is an [attrs](http://www.attrs.org) class, whose parameters can be instantiated or set via attributes.
 
 ```{code-cell} ipython3
@@ -33,8 +33,8 @@ try:
     from importlib_resources import files
 except ImportError:
     from importlib.resources import files
-from pytest_notebook import example_nbs
-from pytest_notebook.nb_regression import NBRegressionFixture
+from pytest_notebook_next import example_nbs
+from pytest_notebook_next.nb_regression import NBRegressionFixture
 ```
 
 ```{code-cell} ipython3
@@ -43,7 +43,7 @@ fixture.diff_color_words = False
 fixture
 ```
 
-The main method is {py:meth}`~pytest_notebook.nb_regression.NBRegressionFixture.check`, which executes a notebook and compares its initial and final contents.
+The main method is {py:meth}`~pytest_notebook_next.nb_regression.NBRegressionFixture.check`, which executes a notebook and compares its initial and final contents.
 
 ```{code-cell} ipython3
 :tags: [raises-exception]
@@ -52,7 +52,7 @@ with files(example_nbs).joinpath("example1.ipynb") as path:
     fixture.check(str(path))
 ```
 
-To return the results, without raising an exception, use ``raise_errors=False``. This returns a {py:class}`~pytest_notebook.nb_regression.NBRegressionResult` instance.
+To return the results, without raising an exception, use ``raise_errors=False``. This returns a {py:class}`~pytest_notebook_next.nb_regression.NBRegressionResult` instance.
 
 ```{code-cell} ipython3
 with files(example_nbs).joinpath("example1.ipynb") as path:
@@ -82,15 +82,15 @@ result.nb_final
 +++
 
 :::{seealso}
-    {py:mod}`pytest_notebook.ipy_magic`,
+    {py:mod}`pytest_notebook_next.ipy_magic`,
     for the notebook magic used to run pytest in a Jupyter Notebook.
 :::
 
 ```{code-cell} ipython3
-%load_ext pytest_notebook.ipy_magic
+%load_ext pytest_notebook_next.ipy_magic
 ```
 
-A {py:class}`~pytest_notebook.nb_regression.NBRegressionFixture` instance can accessed *via* the {py:func}`~pytest_notebook.plugin.nb_regression` fixture.
+A {py:class}`~pytest_notebook_next.nb_regression.NBRegressionFixture` instance can accessed *via* the {py:func}`~pytest_notebook_next.plugin.nb_regression` fixture.
 This instance will be instatiated with parameters dictated by arguments parsed from the pytest command-line and configuration file(s).
 
 :::{note}
@@ -112,7 +112,7 @@ try:
     from importlib_resources import files
 except ImportError:
     from importlib.resources import files
-from pytest_notebook import example_nbs
+from pytest_notebook_next import example_nbs
 
 def test_notebook(nb_regression):
     with files(example_nbs).joinpath("example1.ipynb") as path:
@@ -123,7 +123,7 @@ def test_notebook(nb_regression):
 
 +++
 
-{py:meth}`~pytest_notebook.nb_regression.NBRegressionFixture.check` can be run automatically on all notebooks using the pytest collection mechanism.
+{py:meth}`~pytest_notebook_next.nb_regression.NBRegressionFixture.check` can be run automatically on all notebooks using the pytest collection mechanism.
 To activate this feature, set `--nb-test-files` on the command-line, or `nb_test_files = True` in the configuration file.
 
 ```{code-cell} ipython3
@@ -228,7 +228,7 @@ try:
 except ImportError:
     from importlib.resources import files
 import pytest
-from pytest_notebook import example_nbs
+from pytest_notebook_next import example_nbs
 
 @pytest.fixture(scope="module")
 def notebook():

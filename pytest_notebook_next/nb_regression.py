@@ -19,24 +19,24 @@ try:
 except ImportError:
     CoverageType = Any
 
-from pytest_notebook.diffing import diff_notebooks, diff_to_string, filter_diff
-from pytest_notebook.execution import (
+from pytest_notebook_next.diffing import diff_notebooks, diff_to_string, filter_diff
+from pytest_notebook_next.execution import (
     HELP_COVERAGE,
     HELP_COVERAGE_CONFIG,
     HELP_COVERAGE_SOURCE,
     execute_notebook,
 )
-from pytest_notebook.notebook import (
+from pytest_notebook_next.notebook import (
     load_notebook_with_config,
     regex_replace_nb,
     validate_regex_replace,
 )
-from pytest_notebook.post_processors import (
+from pytest_notebook_next.post_processors import (
     ENTRY_POINT_NAME,
     list_processor_names,
     load_processor,
 )
-from pytest_notebook.utils import autodoc
+from pytest_notebook_next.utils import autodoc
 
 logger = logging.getLogger(__name__)
 

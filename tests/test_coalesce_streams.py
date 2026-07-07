@@ -2,8 +2,8 @@ import os
 
 import nbformat
 
-from pytest_notebook.notebook import create_notebook, prepare_cell
-from pytest_notebook.post_processors import coalesce_streams
+from pytest_notebook_next.notebook import create_notebook, prepare_cell
+from pytest_notebook_next.post_processors import coalesce_streams
 
 path = os.path.dirname(os.path.realpath(__file__))
 

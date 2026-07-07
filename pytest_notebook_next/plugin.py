@@ -17,7 +17,7 @@ import shlex
 
 import pytest
 
-from pytest_notebook.nb_regression import (
+from pytest_notebook_next.nb_regression import (
     HELP_COVERAGE,
     HELP_DIFF_COLOR_WORDS,
     HELP_DIFF_IGNORE,
@@ -31,7 +31,7 @@ from pytest_notebook.nb_regression import (
     HELP_POST_PROCS,
     NBRegressionFixture,
 )
-from pytest_notebook.notebook import load_notebook_with_config, validate_regex_replace
+from pytest_notebook_next.notebook import load_notebook_with_config, validate_regex_replace
 
 HELP_TEST_FILES = "Treat each .ipynb file as a test to be run."
 HELP_FILE_FNMATCH = (

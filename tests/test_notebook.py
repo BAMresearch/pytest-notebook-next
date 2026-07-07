@@ -1,5 +1,5 @@
-"""Tests for pytest_notebook.notebook."""
-from pytest_notebook.notebook import (
+"""Tests for pytest_notebook_next.notebook."""
+from pytest_notebook_next.notebook import (
     META_KEY,
     MetadataConfig,
     config_from_metadata,

@@ -16,8 +16,8 @@ from nbclient.util import run_sync
 from nbformat import NotebookNode
 import traitlets
 
-from pytest_notebook.notebook import create_cell
-from pytest_notebook.utils import autodoc
+from pytest_notebook_next.notebook import create_cell
+from pytest_notebook_next.utils import autodoc
 
 logger = logging.getLogger(__name__)
 

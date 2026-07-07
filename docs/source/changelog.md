@@ -38,7 +38,7 @@
 - Add Coverage Functionality (#3)
 
   An ``ExecuteCoveragePreprocessor`` class has been implemented,
-  and integrated into the ``NBRegressionFixture`` and ``pytest_notebook.plugin``.
+  and integrated into the ``NBRegressionFixture`` and ``pytest_notebook_next.plugin``.
   Also, tests and a tutorial have been added.
 
 ## v0.5.2 (2019-08-12)

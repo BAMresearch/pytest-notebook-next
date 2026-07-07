@@ -21,9 +21,9 @@ import jsonschema
 import nbformat
 from nbformat import NotebookNode
 
-from pytest_notebook import resources
-from pytest_notebook.diffing import join_path, star_path
-from pytest_notebook.utils import autodoc
+from pytest_notebook_next import resources
+from pytest_notebook_next.diffing import join_path, star_path
+from pytest_notebook_next.utils import autodoc
 
 DEFAULT_NB_VERSION = 4
 

@@ -21,16 +21,16 @@ This notebook was rendered with [myst-nb](https://myst-nb.readthedocs.io): {nb-d
 
 +++
 
-The core component of the notebook execution API is the {py:class}`~pytest_notebook.execution.CoverageNotebookClient` class,
+The core component of the notebook execution API is the {py:class}`~pytest_notebook_next.execution.CoverageNotebookClient` class,
 which is a subclass of {py:class}`nbclient.client.NotebookClient`,
 that can additionally create code [coverage](https://coverage.readthedocs.io) analytics.
 
-This class is called by {py:func}`~pytest_notebook.execution.execute_notebook`,
-which returns an {py:class}`~pytest_notebook.execution.ExecuteResult` object.
+This class is called by {py:func}`~pytest_notebook_next.execution.execute_notebook`,
+which returns an {py:class}`~pytest_notebook_next.execution.ExecuteResult` object.
 
 ```{code-cell} ipython3
-from pytest_notebook.execution import execute_notebook
-from pytest_notebook.notebook import create_notebook, create_cell, dump_notebook
+from pytest_notebook_next.execution import execute_notebook
+from pytest_notebook_next.notebook import create_notebook, create_cell, dump_notebook
 ```
 
 ```{code-cell} ipython3
@@ -43,8 +43,8 @@ notebook = create_notebook(
     },
     cells=[
         create_cell("""
-from pytest_notebook import __version__
-from pytest_notebook.notebook import create_notebook
+from pytest_notebook_next import __version__
+from pytest_notebook_next.notebook import create_notebook
 print(__version__)
 """
     )]
@@ -70,7 +70,7 @@ The coverage can be limited to particular files or modules, by setting `cov_sour
 
 ```{code-cell} ipython3
 result = execute_notebook(
-    notebook, with_coverage=True, cov_source=['pytest_notebook.notebook'])
+    notebook, with_coverage=True, cov_source=['pytest_notebook_next.notebook'])
 result.coverage_dict
 ```
 
@@ -79,7 +79,7 @@ result.coverage_dict
 +++
 
 If the [pytest-cov](https://pytest-cov.readthedocs.io) plugin is installed,
-the {py:class}`~pytest_notebook.nb_regression.NBRegressionFixture` will be initialised
+the {py:class}`~pytest_notebook_next.nb_regression.NBRegressionFixture` will be initialised
 with the settings and {py:class}`coverage.Coverage` object, that
 `pytest-cov` has created.
 
@@ -87,11 +87,11 @@ If the `--nb-coverage` flag is set, then `nb_regression` will run coverage intro
 and merge the data back into the main {py:class}`~coverage.Coverage` object.
 
 ```{code-cell} ipython3
-%load_ext pytest_notebook.ipy_magic
+%load_ext pytest_notebook_next.ipy_magic
 ```
 
 ```{code-cell} ipython3
-%%pytest --disable-warnings --color=yes --cov=pytest_notebook --nb-coverage --log-cli-level=info
+%%pytest --disable-warnings --color=yes --cov=pytest_notebook_next --nb-coverage --log-cli-level=info
 
 import logging
 try:
@@ -99,7 +99,7 @@ try:
     from importlib_resources import files
 except ImportError:
     from importlib.resources import files
-from pytest_notebook import example_nbs
+from pytest_notebook_next import example_nbs
 
 def test_notebook(nb_regression):
     logging.getLogger(__name__).info(nb_regression)
@@ -110,7 +110,7 @@ def test_notebook(nb_regression):
 This is also the case, when using the pytest file collection approach.
 
 ```{code-cell} ipython3
-%%pytest --disable-warnings --color=yes --cov=pytest_notebook --log-cli-level=info
+%%pytest --disable-warnings --color=yes --cov=pytest_notebook_next --log-cli-level=info
 
 ---
 [pytest]

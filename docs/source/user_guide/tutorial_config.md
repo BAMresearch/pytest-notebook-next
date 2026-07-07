@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-(configuring_pytest_notebook)=
+(configuring_pytest_notebook_next)=
 
 # Configuring pytest-notebook-next
 
@@ -40,7 +40,7 @@ import nbformat
 ```
 
 ```{code-cell} ipython3
-%load_ext pytest_notebook.ipy_magic
+%load_ext pytest_notebook_next.ipy_magic
 ```
 
 ## Ignoring Elements of the Notebook
@@ -278,7 +278,7 @@ setup(
 ```
 
 :::{seealso}
-{py:mod}`pytest_notebook.post_processors`
+{py:mod}`pytest_notebook_next.post_processors`
 for the internally provided plugins.
 :::
 
@@ -335,7 +335,7 @@ nb_post_processors =
 
 +++
 
-The {py:func}`~pytest_notebook.post_processors.beautifulsoup` post-processor may also be useful, for assessing differences in HTML and SVG outputs.
+The {py:func}`~pytest_notebook_next.post_processors.beautifulsoup` post-processor may also be useful, for assessing differences in HTML and SVG outputs.
 
 :::{note}
 This requires [beautifulsoup4](https://beautiful-soup-4.readthedocs.io) to be installed.

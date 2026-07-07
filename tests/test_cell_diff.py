@@ -1,7 +1,7 @@
 import pytest
 
-from pytest_notebook.diffing import diff_notebooks
-from pytest_notebook.notebook import prepare_cell
+from pytest_notebook_next.diffing import diff_notebooks
+from pytest_notebook_next.notebook import prepare_cell
 
 
 def get_test_cell(type_name, variable="hallo"):
